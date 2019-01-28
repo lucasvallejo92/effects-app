@@ -1,3 +1,21 @@
-<p>
-  usuario works!
-</p>
+<div class="row">
+  <div class="col-3">
+    <img [src]="usuario.avatar" class="thumbnail">
+  </div>
+  <div class="col">
+    <ul class="list-groug">
+      <li class="list-group-item">
+        <strong>ID:</strong>
+        {{ usuario.id }}
+      </li>
+      <li class="list-group-item">
+        <strong>NOMBRE:</strong>
+        {{ usuario.first_name }}
+      </li>
+      <li class="list-group-item">
+        <strong>APELLIDO:</strong>
+        {{ usuario.last_name }}
+      </li>
+    </ul>
+  </div>
+</div>
