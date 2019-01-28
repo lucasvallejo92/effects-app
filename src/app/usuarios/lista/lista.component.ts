@@ -13,6 +13,9 @@ import * as usuariosActions from '../../store/actions';
 export class ListaComponent implements OnInit {
 
   usuarios: Usuario[] = [];
+  loading: boolean;
+  loaded: boolean;
+  error: any;
 
   // FORMA NORMAL
   // constructor( public usuarioService: UsuarioService ) { }
@@ -28,6 +31,14 @@ export class ListaComponent implements OnInit {
     // });
 
     // CON NgRx
+    this.store.select('usuarios').subscribe(
+      usuarios => {
+        this.usuarios = usuarios.users;
+        this.loading = usuarios.loading;
+        this.loaded = usuarios.loaded;
+        this.error = usuarios.error;
+      }
+    );
     // new actions.CargarUsuarios()
     this.store.dispatch( new usuariosActions.CargarUsuarios);
   }

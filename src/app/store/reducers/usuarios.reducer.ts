@@ -24,7 +24,9 @@ export function usuariosReducer ( state = estadoInicial, action: fromUsuarios.Us
         case fromUsuarios.CARGAR_USUARIOS:
             return {
                 ...state,
-                loading: true
+                loading: true,
+                loaded: false,
+                error: null
             };
 
         case fromUsuarios.CARGAR_USUARIOS_SUCCESS:
@@ -40,7 +42,11 @@ export function usuariosReducer ( state = estadoInicial, action: fromUsuarios.Us
                 ...state,
                 loading: false,
                 loaded: false,
-                error: action.payload
+                error: {
+                    status: action.payload.status,
+                    message: action.payload.message,
+                    url: action.payload.url
+                }
             };
 
         default:
